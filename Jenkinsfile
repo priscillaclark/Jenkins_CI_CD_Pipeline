@@ -1,12 +1,14 @@
 pipeline {
+    
     agent any
+    
     tools {
         jdk 'JDK8' 
         maven 'Maven3' 
     }
 
     stages {
-        stage('Git Checkout') {
+        stage("Git Checkout") {
             steps {
                 // Clone the Git repository
                 git url: 'https://github.com/priscillaclark/Jenkins_CI_CD_Pipeline'
@@ -14,14 +16,14 @@ pipeline {
          }
 
        
-        stage('Compile') {
+        stage("Compile") {
             steps {
                 sh 'mvn compile'
             }
         }
      
 
-        stage('Build Docker Image') {
+        stage("Build Docker Image") {
             steps {
         		    script {
             		    def dockerImageName = 'your-docker-image-name'  
